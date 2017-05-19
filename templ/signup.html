@@ -1,0 +1,25 @@
+<form name="meform" novalidate="novalidate">
+    <div>
+        <div class="form-group">
+            <label for="username" class="control-label">昵称</label>
+            <input type="text" id="username" name="username" placeholder="请输入昵称" class="form-control" ng-model="user.userName" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="userEmail" class="control-label">邮箱</label>
+            <input type="email" id="userEmail" name="userEmail" class="form-control" ng-model="user.userEmail" placeholder="请输入邮箱，方便我们联系您">
+            <div class="alert alert-danger" ng-show="meform.userEmail.$error.required&&meform.userEmail
+.$dirty">邮箱必须填写</div>
+        </div>
+        <div class="form-group">
+            <label for="password">请输入密码</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
+        </div>
+        <div class="form-group">
+            <label for="password2">请确认密码</label>
+            <input type="password" class="form-control" name="password" id="password2" placeholder="在输一次吧，亲！">
+        </div>
+        <div class="form-group">
+            <!--如果通过 则可以点击 不同过禁用-->
+            <button type="button" class="btn btn-info" ng-disabled="meform.$invalid" ng-click="add()">提交</button>
+    </div>
+</form>

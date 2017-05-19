@@ -1,0 +1,24 @@
+<form name="myform" novalidate="novalidate">
+    <!--使用angular校验 关闭掉h5校验-->
+    <div class="form-group">
+        <label for="productName" class="control-label">书名</label>
+        <input type="text" class="form-control" id="productName" placeholder="请输入书名" name="productName" ng-model="product.productName" ng-required="true" autocomplete="off">
+        <!--必须填写 并且当前输入框 输入过内容-->
+        <div class="alert alert-danger" ng-show="myform.productName.$error.required&&myform.productName.$dirty">书名必须填写</div>
+    </div>
+    <div class="form-group">
+        <label for="productPrice" class="control-label">书的价格</label>
+        <input type="text" class="form-control" id="productPrice" placeholder="请输入价格" name="productPrice" ng-model="product.productPrice" autocomplete="off" ng-required="true" ng-pattern="/^\d+$/">
+        <div class="alert alert-danger" ng-show="myform.productPrice.$error.required&&myform.productPrice.$dirty">价格必须填写</div>
+        <div class="alert alert-danger" ng-show="myform.productPrice.$error.pattern">价格必须是数字类型</div>
+    </div>
+    <div class="form-group">
+        <label for="productCover" class="control-label">书的封面</label>
+        <input type="text" class="form-control" id="productCover" placeholder="请输入封面" name="productCover" ng-model="product.productCover" autocomplete="off" ng-required="true">
+        <div class="alert alert-danger" ng-show="myform.productCover.$error.required&&myform.productCover.$dirty">封面必须填写</div>
+    </div>
+    <div class="form-group">
+        <!--如果通过 则可以点击 不同过禁用-->
+        <button type="button" class="btn btn-info" ng-disabled="myform.$invalid" ng-click="add()">添加图书</button>
+    </div>
+</form>

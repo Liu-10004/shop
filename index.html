@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="js/controller.js"></script>
+    <title>二手商城</title>
+</head>
+<body >
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <a href="#!/home">二手商城</a>
+        </div>
+        <div class="nav">
+            <ul class="navbar-nav nav">
+                <li><a href="#!/home">首页</a></li>
+                <li><a href="#!/list">闲逛</a></li>
+                <li><a href="#!/add">添加二手商品</a></li>
+            </ul>
+            <ul class="navbar-nav nav pull-right">
+                <li><a href="#!/signup">注册</a></li>
+                <li><a href="#!/signin">登录</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ng-view class="container"></div>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-resource/angular-resource.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script src="js/controller.js"></script>
+<script>
+    var app = angular.module('appModule', ['ngResource','ngRoute','appModule.controller']);
+    app.factory('Book',['$resource',function ($resource){
+        return $resource('/book/:id',null,{
+            update:{method:'PUT'}
+        })
+    }])
+    app.config(['$routeProvider',function ($routeProvider){
+        $routeProvider.when('/home',{
+            templateUrl:'templ/home.html',
+            controller:'homeCtrl'
+        }).when('/list',{
+            templateUrl:'templ/list.html',
+            controller:'listCtrl'
+        }).when('/add',{
+            templateUrl:'templ/add.html',
+            controller:'addCtrl'
+        }).when('/detail/:id',{
+            templateUrl:'templ/detail.html',
+            controller:'detailCtrl'
+        }).when('/signup',{
+            templateUrl:'templ/signup.html',
+            controller:'signupCtrl'
+        }).when('/signin',{
+            templateUrl:'templ/signin.html',
+            controller:'signinCtrl'
+        }).otherwise('/home')
+    }])
+</script>
+</body>
+</html>

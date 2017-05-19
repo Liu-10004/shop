@@ -1,0 +1,20 @@
+<div class="col-lg-3" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label for="productName" ng-show="flag">{{product.productName}}</label>
+            <input type="text" id="productName" ng-model="temp.productName" ng-hide="flag">
+            <span><a href="#!/list" class="btn btn-success pull-right">返回</a></span>
+        </div>
+        <div class="panel-body">
+            <img ng-src="{{product.productCover}}" class="text-center" alt="图片" style="width:100% ;height: 150px">
+        </div>
+        <div class="panel-footer">
+            <span>{{product.productPrice|currency:'￥'}}</span>
+            <input type="text" ng-model="temp.productPrice" ng-hide="flag">
+            <button class="btn btn-warning" ng-show="flag" ng-click="changeFlag()">修改</button>
+            <button class="btn btn-danger" ng-show="flag" ng-click="remove()">删除</button>
+            <button class="btn btn-default" ng-hide="flag" ng-click="flag=true">取消</button>
+            <button class="btn btn-success" ng-hide="flag" ng-click="update()">确认</button>
+        </div>
+    </div>
+</div>
